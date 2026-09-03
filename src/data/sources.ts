@@ -35,7 +35,7 @@ export const sources: Source[] = [
     id: 'TS-VIKTER-SLAP',
     title: 'Vikter att ta hänsyn till när du drar en släpvagn',
     publisher: 'Transportstyrelsen',
-    url: 'https://www.transportstyrelsen.se/sv/vagtrafik/fordon/fordonsregler/slap/vikter-att-ta-hansyn-till-nar-du-drar-en-slapvagn/',
+    url: 'https://www.transportstyrelsen.se/sv/vagtrafik/fordon/fordonsregler/regler-for-olika-fordonsslag/slap/vikter/',
     checked: '2026-09-03',
     note: 'Totalvikt, tjänstevikt, bruttovikt, maxlast, O.1/O.2 och maximal tågvikt (F.3).',
   },

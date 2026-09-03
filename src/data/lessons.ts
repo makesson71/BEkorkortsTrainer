@@ -57,7 +57,7 @@ export const lessons: Lesson[] = [
       'En vanlig bromsad släpvagn får normalt köras i högst 80 km/h.',
       'Ett obromsat släp med totalvikt högst 750 kg får köras i 80 km/h om släpets totalvikt (eller tjänstevikt när släpet är olastat) inte överstiger halva bilens tjänstevikt.',
       'Om halva-tjänsteviktsvillkoret inte är uppfyllt anger Transportstyrelsen högst 40 km/h.',
-      'Ett släp med ledad dragstång och påskjutsbroms, exempelvis med styrande framaxel, hör också till 40 km/h-fallet.',
+      'Släp med ledad dragstång och påskjutsbroms, exempelvis med styrande framaxel, hör till 40 km/h-fallen när villkoren för den kategorin är uppfyllda.',
       'En lägre skyltad hastighet gäller alltid.',
       'Kontrollera ett verkligt ekipage i Transportstyrelsens släpvagnskalkylator.',
     ],
@@ -70,7 +70,7 @@ export const lessons: Lesson[] = [
     minutes: 8,
     summary: 'Kunna både kontrollera och förklara varför kontrollen behövs.',
     bullets: [
-      'Bil och släp ska vara isärkopplade, stå sida vid sida och inte i linje med varandra när körprovet startar.',
+      'När körprovet börjar står dragfordonet bakom eller vid sidan om släpfordonet. Fordonen är ännu inte sammankopplade; du kopplar till släpet vid den inledande säkerhetskontrollen.',
       'Alltid: dörrar, lastens säkring/placering/mängd och registreringsbevis.',
       'Alltid: kopplingsanordning, katastrofbromsvajer, bromsar och elanslutning till släpet.',
       'Du kan få slumpmässiga kontroller av bland annat belysning, däck, styrning, vätskor, rutor och varningssystem.',

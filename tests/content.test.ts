@@ -26,6 +26,27 @@ describe('training content hygiene', () => {
     expect(numericChoices.filter((value) => value === 750)).toHaveLength(1);
   });
 
+  it('keeps the two half-service-weight scenarios intact', () => {
+    expect(questions.find((question) => question.id === 'q11')?.correctIndex).toBe(1);
+    expect(questions.find((question) => question.id === 'q11b')?.correctIndex).toBe(0);
+  });
+
+  it('teaches both valid starting positions for the BE driving test', () => {
+    const q12 = questions.find((question) => question.id === 'q12')!;
+    const correctChoice = q12.choices[q12.correctIndex].toLocaleLowerCase('sv');
+    expect(correctChoice).toContain('bakom eller vid sidan om');
+    expect(correctChoice).toContain('inte sammankopplade');
+    expect(correctChoice).toContain('säkerhetskontrollen');
+    expect(q12.choices.filter((choice) => choice.toLocaleLowerCase('sv').includes('bakom eller vid sidan om'))).toHaveLength(1);
+    expect(`${q12.prompt} ${q12.explanation}`).not.toContain('inte i linje');
+  });
+
+  it('uses the canonical Transportstyrelsen path for trailer weight terminology', () => {
+    expect(sourceById['TS-VIKTER-SLAP'].url).toBe(
+      'https://www.transportstyrelsen.se/sv/vagtrafik/fordon/fordonsregler/regler-for-olika-fordonsslag/slap/vikter/',
+    );
+  });
+
   it('uses current regulation sources rather than presenting TSFS 2012:45 as current', () => {
     expect(sourceById['TS-KURSPLAN-BE'].title).toContain('TSFS 2011:21');
     expect(sourceById['TS-FORARPROV-BE'].title).toContain('TSFS 2017:116');
