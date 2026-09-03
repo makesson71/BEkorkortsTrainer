@@ -1,0 +1,13 @@
+{
+  "name": "BE Trainer Sverige",
+  "short_name": "BE Trainer",
+  "lang": "sv-SE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#101828",
+  "description": "Träna inför svenskt BE-körkort med förståelse, inte utantillinlärning.",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
