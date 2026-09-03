@@ -20,7 +20,7 @@ A conventional question bank treats both users and knowledge gaps as identical. 
 - Responsive PWA shell.
 - Offline service worker baseline.
 - Source registry and source links in UI.
-- 36 original training questions.
+- 37 original training questions.
 - Confidence-aware attempts stored locally.
 - Diagnostic subset.
 - Seven micro-lessons.
