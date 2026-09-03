@@ -98,7 +98,7 @@ export function ConceptLab({ onOpenWeightLab }: { onOpenWeightLab: () => void })
             <button className="primary" type="button" onClick={() => setView('browse')}>Börja med begreppen</button>
             <button type="button" onClick={() => setView('visualizer')}>Hoppa till räkning</button>
           </div>
-          <p className="notice"><strong>Inte ett myndighetsbesked.</strong> Labbet tränar begrepp. Ett verkligt ekipage ska kontrolleras mot registreringsbevis och Transportstyrelsens släpvagnskalkylator. Vägmärken och “vad har ändrats sedan jag tog körkort” kommer i ett senare steg.</p>
+          <p className="notice"><strong>Inte ett myndighetsbesked.</strong> Labbet tränar begrepp. Ett verkligt ekipage ska kontrolleras mot registreringsbevis och Transportstyrelsens släpvagnskalkylator. Vägmärken och “vad har ändrats?” finns i egna labb i menyn.</p>
         </div>
       )}
 
