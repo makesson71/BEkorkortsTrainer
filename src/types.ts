@@ -114,3 +114,62 @@ export interface CertificateExercise {
   sourceIds: string[];
   card: 'car' | 'trailer' | 'both';
 }
+
+export type RoadSignCategory =
+  | 'warning'
+  | 'priority'
+  | 'prohibition'
+  | 'mandatory'
+  | 'instruction'
+  | 'information'
+  | 'supplementary';
+
+export type RoadSignStatus = 'active' | 'contextual';
+
+export interface RoadSign {
+  id: string;
+  officialCode?: string;
+  nameSv: string;
+  category: RoadSignCategory;
+  meaning: string;
+  driverAction: string;
+  beRelevance: string;
+  commonConfusion: string;
+  relatedSignIds: string[];
+  sourceIds: string[];
+  pedagogyLevel: PedagogyLevel;
+  visualId: string;
+  currentStatus: RoadSignStatus;
+}
+
+export interface RoadSignQuizQuestion {
+  id: string;
+  prompt: string;
+  signId: string;
+  choices: string[];
+  correctIndex: number;
+  explanationCorrect: string;
+  explanationWrong: string;
+  sourceIds: string[];
+}
+
+export type RefresherKind = 'verified-change' | 'current-refresher';
+
+export interface RuleRefresherCard {
+  id: string;
+  title: string;
+  kind: RefresherKind;
+  area: string;
+  summary: string;
+  currentRule: string;
+  beConnection: string;
+  sourceIds: string[];
+  checked: string;
+  historical?: {
+    whatChanged: string;
+    effectiveDate: string;
+    oldSituation: string;
+    currentSituation: string;
+    evidenceSourceIds: string[];
+  };
+}

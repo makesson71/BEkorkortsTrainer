@@ -76,3 +76,11 @@
 .weight-card .weight-field label{font-size:13px;color:#667085}
 fieldset.choices{border:0;padding:0;margin:16px 0}
 fieldset.choices legend{font-weight:800;margin-bottom:10px;color:#101828}
+.refresher-card{position:relative;padding-top:42px}
+.refresher-badge{display:inline-flex;align-items:center;min-height:28px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;position:absolute;top:12px;right:12px}
+.refresher-badge.verified{background:#eef4ff;color:#182230;border:1px solid #4c6fff}
+.refresher-badge.current{background:#ecfdf3;color:#276749;border:1px solid #66c394}
+.sign-visual{display:inline-block;flex:none}
+.sign-prompt{display:flex;justify-content:center;margin:12px 0 20px}
+.sign-choice{display:inline-flex;align-items:center;gap:10px;text-align:left}
+.sign-choice small{display:block;color:#667085;font-weight:700}
