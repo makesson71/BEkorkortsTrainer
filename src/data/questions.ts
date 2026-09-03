@@ -1,8 +1,6 @@
 import type { Question } from '../types';
 
 export const questions: Question[] = [
-
-export const questions: Question[] = [
   { id:'q01', category:'trafikregler', prompt:'Hur många frågor innehåller Trafikverkets BE-teoriprov?', choices:['50','55','60','65'], correctIndex:2, explanation:'Provet innehåller 60 frågor. Fem är testfrågor och räknas inte in i poängen.', sourceIds:['TRV-BE-PROV'], difficulty:1, diagnostic:true },
   { id:'q02', category:'trafikregler', prompt:'Hur lång är ordinarie provtid för BE-teoriprovet?', choices:['30 minuter','40 minuter','50 minuter','60 minuter'], correctIndex:1, explanation:'Trafikverket anger 40 minuters provtid.', sourceIds:['TRV-BE-PROV'], difficulty:1, diagnostic:true },
   { id:'q03', category:'trafikregler', prompt:'Vilken poäng krävs minst för godkänt BE-teoriprov?', choices:['40','42','44','48'], correctIndex:2, explanation:'44 poäng eller mer är godkänt. Maxpoängen är 55 eftersom fem av 60 frågor är testfrågor.', sourceIds:['TRV-BE-PROV'], difficulty:1 },
