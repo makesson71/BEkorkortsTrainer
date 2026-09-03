@@ -7,7 +7,7 @@ Mobile-first Swedish training app for BE (car + heavy trailer), designed especia
 ## What is already included
 - 30-year diagnostic with confidence (`Jag vet / Jag tror / Jag gissar`).
 - Confidence-aware local progress.
-- 36 original, source-linked questions.
+- 37 original, source-linked questions.
 - Seven short lessons.
 - Interactive Weight Lab separating licence entitlement (B/B96/BE) from technical towing limits.
 - Swedish authority source registry with `checked` dates.

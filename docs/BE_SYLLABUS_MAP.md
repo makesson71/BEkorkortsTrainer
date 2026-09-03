@@ -1,6 +1,6 @@
 # BE syllabus map
 
-Primary curriculum: Transportstyrelsen TSFS 2011:21 (consolidated version linked from `TS-KURSPLAN-BE`). Checked 2026-08-31.
+Current course plan: Transportstyrelsen TSFS 2011:21 (consolidated version linked from `TS-KURSPLAN-BE`). Current BE examination regulation: TSFS 2017:116 (consolidated version linked from `TS-FORARPROV-BE`). Checked 2026-09-03.
 
 | Syllabus area | Required themes | Current app | Next content target |
 |---|---|---|---|
@@ -17,3 +17,5 @@ Before v1.0, each important theory outcome should have at least:
 
 ## Audit rule
 When Transportstyrelsen or Trafikverket updates a source, search all question/lesson `sourceIds` referencing it and review affected content before changing the `checked` date.
+
+The app remains an MVP. This map records current coverage but does not mean that the present question set is comprehensive BE theory preparation. Rewriting syllabus-meta questions as applied skills does not increase the documented coverage level.

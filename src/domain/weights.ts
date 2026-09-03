@@ -19,10 +19,13 @@ export interface EligibilityResult {
 
 export function evaluateCombination(input: CombinationInput): EligibilityResult[] {
   const technicalReasons: string[] = [];
+  if (input.carMaxTrainGrossKg !== undefined && input.carMaxTrainGrossKg <= 0) {
+    technicalReasons.push('Högsta tågvikt måste lämnas tom eller anges som ett positivt värde.');
+  }
   const validMasses = input.carGrossKg <= input.carTotalKg && input.trailerGrossKg <= input.trailerTotalKg;
   if (!validMasses) technicalReasons.push('Aktuell bruttovikt får inte vara högre än fordonets totalvikt i den här övningen.');
   if (input.trailerGrossKg > input.carMaxTrailerGrossKg) technicalReasons.push('Släpets aktuella bruttovikt överskrider bilens angivna högsta släpvagnsvikt.');
-  if (input.carMaxTrainGrossKg && input.carGrossKg + input.trailerGrossKg > input.carMaxTrainGrossKg) technicalReasons.push('Aktuell tågvikt överskrider angiven teknisk gräns.');
+  if (input.carMaxTrainGrossKg !== undefined && input.carMaxTrainGrossKg > 0 && input.carGrossKg + input.trailerGrossKg > input.carMaxTrainGrossKg) technicalReasons.push('Aktuell tågvikt överskrider angiven teknisk gräns.');
   const technicalAllowed = validMasses && technicalReasons.length === 0;
 
   const licenceChecks: Record<Licence, { ok: boolean; reasons: string[] }> = {
