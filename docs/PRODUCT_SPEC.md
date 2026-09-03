@@ -10,29 +10,37 @@ A conventional question bank treats both users and knowledge gaps as identical. 
 ## Primary user journey
 1. **30-year diagnostic** — a short cross-section of BE plus high-value refresher areas.
 2. **Personal gap map** — distinguish wrong answers from uncertain lucky guesses.
-3. **Micro-lessons** — 3–8 minutes, sourced to Swedish authorities.
-4. **Weight Lab** — interactive B/B96/BE + technical-limit reasoning.
-5. **Targeted practice** — spaced repetition weighted by correctness and confidence.
-6. **Exam simulation** — when the question bank has enough unique, audited items: 60 questions, 40 minutes, pass display aligned with current Trafikverket format.
-7. **Driving-test mode** — oral safety-control prompts, coupling checklist and manoeuvre preparation.
+3. **Begreppslabbet** — learn the weight/trailer vocabulary, then read a training registration certificate.
+4. **Micro-lessons** — 3–8 minutes, sourced to Swedish authorities.
+5. **Weight Lab** — interactive B/B96/BE + technical-limit reasoning, with concept help from Begreppslabbet.
+6. **Targeted practice** — spaced repetition weighted by correctness and confidence.
+7. **Exam simulation** — when the question bank has enough unique, audited items: 60 questions, 40 minutes, pass display aligned with current Trafikverket format.
+8. **Driving-test mode** — oral safety-control prompts, coupling checklist and manoeuvre preparation.
 
 ## MVP in repository now
 - Responsive PWA shell.
 - Offline service worker baseline.
 - Source registry and source links in UI.
-- 37 original training questions.
+- Original training questions, including a focused concept-lab set.
 - Confidence-aware attempts stored locally.
 - Diagnostic subset.
 - Seven micro-lessons.
-- Interactive Weight Lab.
-- Unit tests for B/B96/BE separation and technical towing limits.
+- Interactive Weight Lab, with ⓘ links into concept explanations.
+- Begreppslabbet: concept model, visualizer, confusion pairs, certificate trainer, drills, licence-versus-technical scenarios.
+- Unit tests for B/B96/BE separation, technical towing limits and concept formulas.
 - CI for tests + production build.
+
+## Concept architecture
+Structured records live in `src/data/concepts.ts`, not as copy pasted through components. Categories can later hold traffic-rule and road-sign concepts without a new model. Drills, confusion pairs and certificate exercises are separate from the main exam bank so the question count is not inflated.
+
+## Core rule
+Do not use **tågvikt** when you actually mean the sum of registered **totalvikter**. Combined registered total weight is a licence-entitlement concept. Tågvikt/F.3 concerns combined bruttovikt.
 
 ## Explicitly not claimed yet
 - The current question bank is **not** a complete substitute for a full audited BE course.
 - No training item is an official Trafikverket question.
-- Weight Lab is not a legal authority or replacement for Transportstyrelsen's släpvagnskalkylator.
-- Driving-test oral mode and full exam simulator remain planned work.
+- Weight Lab and Begreppslabbet are not legal authorities or replacements for Transportstyrelsen's släpvagnskalkylator.
+- Driving-test oral mode, full exam simulator, road-sign catalogue and “what changed since I took my licence” remain planned work.
 
 ## Success criteria before calling v1.0 exam-ready
 - 150+ unique, reviewed questions mapped to syllabus outcomes.

@@ -41,6 +41,12 @@ describe('training content hygiene', () => {
     expect(`${q12.prompt} ${q12.explanation}`).not.toContain('inte i linje');
   });
 
+  it('has no duplicate answer choices on a question', () => {
+    for (const question of questions) {
+      expect(new Set(question.choices).size, question.id).toBe(question.choices.length);
+    }
+  });
+
   it('uses the canonical Transportstyrelsen path for trailer weight terminology', () => {
     expect(sourceById['TS-VIKTER-SLAP'].url).toBe(
       'https://www.transportstyrelsen.se/sv/vagtrafik/fordon/fordonsregler/regler-for-olika-fordonsslag/slap/vikter/',
