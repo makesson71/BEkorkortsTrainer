@@ -22,12 +22,16 @@ function save(progress: RoadSignProgress) {
   localStorage.setItem(KEY, JSON.stringify(progress));
 }
 
-export function markRoadSignIdentified(signId: string) {
+export function markRoadSignIdentified(signId: string): RoadSignProgress {
   const progress = loadRoadSignProgress();
-  save({ ...progress, identified: unique([...progress.identified, signId]) });
+  const next = { ...progress, identified: unique([...progress.identified, signId]) };
+  save(next);
+  return next;
 }
 
-export function markRoadSignActionSolved(signId: string) {
+export function markRoadSignActionSolved(signId: string): RoadSignProgress {
   const progress = loadRoadSignProgress();
-  save({ ...progress, actionSolved: unique([...progress.actionSolved, signId]) });
+  const next = { ...progress, actionSolved: unique([...progress.actionSolved, signId]) };
+  save(next);
+  return next;
 }
