@@ -2,6 +2,14 @@ import type { Source } from '../types';
 
 export const sources: Source[] = [
   {
+    id: 'TSFS-2017-25',
+    title: 'TSFS 2017:25 – lastsäkring och kontroll av lastsäkring (konsoliderad)',
+    publisher: 'Transportstyrelsen',
+    url: 'https://www.transportstyrelsen.se/TSFS/TSFS%202017_25k.pdf',
+    checked: '2026-09-04',
+    note: 'Myndighetens föreskrifter och terminologi för lastsäkring. Labbet återger inga generella friktions- eller surrningsvärden; numeriska gränser måste höra till ett uttryckligt scenario.',
+  },
+  {
     id: 'TRV-BE-PROV',
     title: 'Bil med tungt släp (BE)',
     publisher: 'Trafikverket',
