@@ -10,6 +10,10 @@ const stateText = {
   unsafe: ['⚠ Tydligt olämplig', 'Negativ kopplingsreaktion eller en uttryckligen angiven teknisk övningsgräns har passerats.'],
 } as const;
 
+export function isLoadEditingLocked(showShift: boolean, shiftOnBrakeM?: number): boolean {
+  return showShift && Boolean(shiftOnBrakeM);
+}
+
 function QuizBlock() {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [checked, setChecked] = useState<Record<string, boolean>>({});
@@ -35,6 +39,7 @@ export function LoadStabilityLab({ onOpenWeightLab }: { onOpenWeightLab: () => v
   const [lastChange, setLastChange] = useState('Flytta en last för att se vad som ändras.');
   const [showShift, setShowShift] = useState(false);
   const areaRef = useRef<HTMLDivElement>(null);
+  const editingLocked = isLoadEditingLocked(showShift, scenario.shiftOnBrakeM);
   const loads: PointLoad[] = scenario.loads.map(load => ({...load, positionM:(positions[`${scenario.id}:${load.id}`] ?? load.positionM) - (showShift && scenario.shiftOnBrakeM ? scenario.shiftOnBrakeM : 0)}));
   const modelLoads = [{id:'empty', label:'Släpets egen massa', massKg:scenario.trailerEmptyKg, positionM:scenario.emptyCentreM}, ...loads];
   const reactions = useMemo(() => calculateStaticReactions({couplingM:0, axleM:scenario.axleM, loads:modelLoads}), [scenario, positions, showShift]);
@@ -45,14 +50,22 @@ export function LoadStabilityLab({ onOpenWeightLab }: { onOpenWeightLab: () => v
     (scenario.axleLimitKg === undefined || reactions.axleKg <= scenario.axleLimitKg);
 
   function move(load: PointLoad, next: number) {
+    if (editingLocked) {
+      setLastChange('Visa läget före bromsning för att flytta lasten.');
+      return;
+    }
     const clamped = Math.max(scenario.bodyStartM, Math.min(scenario.bodyEndM, Math.round(next * 20) / 20));
     const old = positions[`${scenario.id}:${load.id}`] ?? load.positionM;
-    setPositions(value => ({...value,[`${scenario.id}:${load.id}`]:clamped}));
     const delta = Math.round((clamped - old) * 100);
+    if (delta === 0) {
+      setLastChange('Lasten kan inte flyttas längre inom lastytan i den riktningen.');
+      return;
+    }
+    setPositions(value => ({...value,[`${scenario.id}:${load.id}`]:clamped}));
     setLastChange(`Du flyttade ${load.massKg} kg ${Math.abs(delta)} cm ${delta < 0 ? 'framåt' : 'bakåt'}. Kopplingsreaktionen ${delta < 0 ? 'ökade' : 'minskade'} och axelreaktionen ${delta < 0 ? 'minskade' : 'ökade'}.`);
   }
   function pointerMove(event: React.PointerEvent, load: PointLoad) {
-    if (!(event.buttons & 1) || !areaRef.current) return;
+    if (editingLocked || !(event.buttons & 1) || !areaRef.current) return;
     const rect = areaRef.current.getBoundingClientRect();
     move(load, scenario.bodyStartM + ((event.clientX - rect.left) / rect.width) * (scenario.bodyEndM - scenario.bodyStartM));
   }
@@ -65,10 +78,11 @@ export function LoadStabilityLab({ onOpenWeightLab }: { onOpenWeightLab: () => v
         <div className="tow-car">DRAGBIL <span>färdriktning →</span></div><div className="drawbar"><i /></div>
         <div className="trailer-body" ref={areaRef}><span className="body-label">LASTYTA</span><span className="axle" style={{left:`${((scenario.axleM-scenario.bodyStartM)/(scenario.bodyEndM-scenario.bodyStartM))*100}%`}}>┃<small>axel</small></span>
           {reactions.centreOfMassM !== null && <span className="com" style={{left:`${((reactions.centreOfMassM-scenario.bodyStartM)/(scenario.bodyEndM-scenario.bodyStartM))*100}%`}} title="Samlad tyngdpunkt">◆<small>tyngdpunkt</small></span>}
-          {loads.map(load => <button key={load.id} className="load-block" style={{left:`${((load.positionM-scenario.bodyStartM)/(scenario.bodyEndM-scenario.bodyStartM))*100}%`}} onPointerMove={event => pointerMove(event,load)} onPointerDown={event => event.currentTarget.setPointerCapture(event.pointerId)} aria-label={`${load.label}, ${load.massKg} kg, läge ${load.positionM.toFixed(2)} meter. Dra eller använd knapparna.`}>{load.label}<small>{load.massKg} kg</small></button>)}
+          {loads.map(load => <button key={load.id} className="load-block" style={{left:`${((load.positionM-scenario.bodyStartM)/(scenario.bodyEndM-scenario.bodyStartM))*100}%`}} onPointerMove={event => pointerMove(event,load)} onPointerDown={event => event.currentTarget.setPointerCapture(event.pointerId)} disabled={editingLocked} aria-label={`${load.label}, ${load.massKg} kg, läge ${load.positionM.toFixed(2)} meter. Dra eller använd knapparna.`}>{load.label}<small>{load.massKg} kg</small></button>)}
         </div>
       </div>
-      <div className="load-controls">{loads.map(load => <div key={load.id}><b>{load.label}: {load.positionM.toFixed(2)} m från kopplingen</b><span><button onClick={() => move(load,load.positionM-.1)} aria-label={`Flytta ${load.label} 10 centimeter framåt`}>← 10 cm</button><button onClick={() => move(load,load.positionM+.1)} aria-label={`Flytta ${load.label} 10 centimeter bakåt`}>10 cm →</button></span></div>)}</div>
+      <div className="load-controls">{loads.map(load => <div key={load.id}><b>{load.label}: {load.positionM.toFixed(2)} m från kopplingen</b><span><button disabled={editingLocked} onClick={() => move(load,load.positionM-.1)} aria-label={`Flytta ${load.label} 10 centimeter framåt`}>← 10 cm</button><button disabled={editingLocked} onClick={() => move(load,load.positionM+.1)} aria-label={`Flytta ${load.label} 10 centimeter bakåt`}>10 cm →</button></span></div>)}</div>
+      {editingLocked && <p className="assumption" role="status">Efter-bromsningen är en låst jämförelsevy. Visa läget före bromsning för att flytta lasten.</p>}
       <button onClick={() => {setPositions(old => Object.fromEntries(Object.entries(old).filter(([key]) => !key.startsWith(`${scenario.id}:`)))); setShowShift(false); setLastChange('Scenariot är återställt.');}}>Återställ scenario</button>
       {scenario.shiftOnBrakeM && <button className="brake-button" onClick={() => {setShowShift(value=>!value);setLastChange(!showShift ? `Vid inbromsningen flyttades den osäkrade lasten ${scenario.shiftOnBrakeM} m framåt i det här exemplet.` : 'Lasten visas åter före bromsningen.');}}>{showShift ? 'Visa före bromsning' : 'Bromsa → visa lastförskjutning'}</button>}
       <div className={`stability-card state-${stability}`} role="status"><strong>{stateText[stability][0]}</strong><p>{stateText[stability][1]}</p></div>

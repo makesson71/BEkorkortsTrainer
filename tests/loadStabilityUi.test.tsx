@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import { LoadStabilityLab } from '../src/components/LoadStabilityLab';
+import { isLoadEditingLocked, LoadStabilityLab } from '../src/components/LoadStabilityLab';
 
 describe('LoadStabilityLab initial UI', () => {
   const html = renderToStaticMarkup(<LoadStabilityLab onOpenWeightLab={() => undefined} />);
@@ -18,5 +18,13 @@ describe('LoadStabilityLab initial UI', () => {
   it('does not leak quiz answers before submission', () => {
     expect(html).not.toContain('Rätt svar:');
     expect(html).not.toContain('Trögheten ger en rörelsetendens');
+  });
+});
+
+describe('braking shift preview', () => {
+  it('locks editing only while a real shift preview is active', () => {
+    expect(isLoadEditingLocked(false, 0.9)).toBe(false);
+    expect(isLoadEditingLocked(true, undefined)).toBe(false);
+    expect(isLoadEditingLocked(true, 0.9)).toBe(true);
   });
 });
