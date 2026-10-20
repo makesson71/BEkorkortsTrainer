@@ -23,10 +23,12 @@ Intentionally deferred. Not in this PR.
 - Centre of mass, load placement, stability and securing principles without inventing universal nose-weight numbers.
 - Scenario animations for crosswind, braking and oscillation.
 
-## PR 5 — Coupling & safety-control coach
+## PR 5 — Coupling & safety-control coach (implemented)
 - Step-by-step coupling / uncoupling practice.
 - Oral examiner mode: prompt -> speak/think -> reveal audit checklist.
 - Random safety-control prompts reflecting Trafikverket's current list.
+
+Implemented as a source-linked, non-scored rehearsal. Exact mechanical operations remain governed by the vehicle, trailer and coupling manuals.
 
 ## PR 6 — Exam-ready bank
 - 150+ reviewed questions.
@@ -44,3 +46,4 @@ Intentionally deferred. Not in this PR.
 - Import a user's own vehicle/trailer registration data only if a safe and maintainable official data route is available.
 - Multi-device sync is intentionally deferred; local-first is sufficient for MVP.
 - Backend/accounts/cloud sync remain out of scope.
+

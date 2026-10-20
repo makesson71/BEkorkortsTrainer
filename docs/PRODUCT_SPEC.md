@@ -27,6 +27,7 @@ A conventional question bank treats both users and knowledge gaps as identical. 
 - Seven micro-lessons.
 - Interactive Weight Lab, with ⓘ links into concept explanations.
 - Begreppslabbet: concept model, visualizer, confusion pairs, certificate trainer, drills, licence-versus-technical scenarios.
+- Driving-test foundation: source-linked coupling/uncoupling rehearsal and non-scored oral safety-control prompts.
 - Unit tests for B/B96/BE separation, technical towing limits and concept formulas.
 - CI for tests + production build.
 
@@ -40,7 +41,7 @@ Do not use **tågvikt** when you actually mean the sum of registered **totalvikt
 - The current question bank is **not** a complete substitute for a full audited BE course.
 - No training item is an official Trafikverket question.
 - Weight Lab and Begreppslabbet are not legal authorities or replacements for Transportstyrelsen's släpvagnskalkylator.
-- Driving-test oral mode, full exam simulator, road-sign catalogue and “what changed since I took my licence” remain planned work.
+- The full exam simulator and the remaining manoeuvre/test-day flows are still planned work. The existing oral safety-control mode is rehearsal, not an assessment of driving competence.
 
 ## Success criteria before calling v1.0 exam-ready
 - 150+ unique, reviewed questions mapped to syllabus outcomes.
@@ -49,3 +50,4 @@ Do not use **tågvikt** when you actually mean the sum of registered **totalvikt
 - Full 60-question/40-minute simulator with no repeated item in a session.
 - Coverage report shows no critical syllabus outcome with fewer than three questions.
 - Accessibility audit, mobile Safari/Chrome test, PWA install test.
+

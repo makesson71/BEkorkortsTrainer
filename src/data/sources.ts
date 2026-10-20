@@ -14,7 +14,7 @@ export const sources: Source[] = [
     title: 'Bil med tungt släp (BE)',
     publisher: 'Trafikverket',
     url: 'https://www.trafikverket.se/korkort/ta-korkort/personbil-och-latt-lastbil/bil-med-tungt-slap-be/',
-    checked: '2026-09-03',
+    checked: '2026-10-20',
     note: 'Provformat, körprov, säkerhetskontroll och krav på provfordon.',
   },
   {
@@ -37,7 +37,7 @@ export const sources: Source[] = [
     title: 'Köra personbil eller lätt lastbil med släp- eller husvagn',
     publisher: 'Transportstyrelsen',
     url: 'https://www.transportstyrelsen.se/sv/vagtrafik/fordon/fordonsregler/regler-for-olika-fordonsslag/slap/slapvagn-husvagn/',
-    checked: '2026-09-03',
+    checked: '2026-10-20',
     note: 'Hastighet, registreringsbevisfält, kopplingskontroll, kultryck, katastrofbromsvajer, ledad dragstång och påskjutsbroms.',
   },
   {
@@ -101,7 +101,7 @@ export const sources: Source[] = [
     title: 'TSFS 2019:127 – sammankoppling av bilar och släpvagnar (konsoliderad)',
     publisher: 'Transportstyrelsen',
     url: 'https://www.transportstyrelsen.se/TSFS/TSFS%202019_127%20k.pdf',
-    checked: '2026-09-03',
+    checked: '2026-10-20',
     note: 'Automatisk inbromsning vid brott på kopplingen; reservkoppling (säkerhetsvajer/kedja) ska vara ansluten till dragfordonet.',
   },
   {
@@ -227,3 +227,4 @@ export const sources: Source[] = [
 ];
 
 export const sourceById = Object.fromEntries(sources.map((source) => [source.id, source]));
+

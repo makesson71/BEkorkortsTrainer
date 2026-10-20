@@ -173,3 +173,26 @@ export interface RuleRefresherCard {
     evidenceSourceIds: string[];
   };
 }
+
+export type SafetyProcedure = 'couple' | 'uncouple';
+
+export interface SafetyProcedureStep {
+  id: string;
+  procedure: SafetyProcedure;
+  title: string;
+  instruction: string;
+  confirmation: string;
+  sourceIds: string[];
+}
+
+export interface SafetyControlPrompt {
+  id: string;
+  title: string;
+  prompt: string;
+  alwaysIncluded: boolean;
+  checklist: string[];
+  why: string;
+  faultAction: string;
+  sourceIds: string[];
+}
+
