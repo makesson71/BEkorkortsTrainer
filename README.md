@@ -11,6 +11,7 @@ Mobile-first Swedish training app for BE (car + heavy trailer), designed especia
 - Seven short lessons.
 - Interactive Weight Lab separating licence entitlement (B/B96/BE) from technical towing limits.
 - **Begreppslabbet:** structured weight/trailer/licence concepts, relationship visualizer, “Blanda inte ihop”, registration-certificate trainer and concept drills.
+- **Kopplings- och säkerhetskontrollcoach:** källspårade steg för koppling/frånkoppling och muntliga kontrollfrågor utan falsk kompetensbedömning.
 - Swedish authority source registry with `checked` dates.
 - Responsive PWA baseline and offline service worker.
 - Unit tests and GitHub Actions CI.
@@ -25,7 +26,7 @@ Do not use **tågvikt** when you actually mean the sum of registered **totalvikt
 Transportstyrelsen’s page *Personbil med släp* sometimes says “tågvikt” when describing B + a light trailer up to 4 250 kg registered total weight. The app teaches the technical meaning from the dedicated trailer-weight guidance and flags the wording clash.
 
 ## Verified 2026 anchors
-As checked 2026-09-03 against official pages:
+Core licence and theory anchors were checked 2026-09-03. Coupling and driving-test safety controls were rechecked 2026-10-20 against the source registry:
 - BE theory: 60 questions, 40 minutes, pass at 44 points; five questions are unscored test questions, giving max 55 points.
 - Passed BE theory is valid for one year.
 - Current BE: towing vehicle total weight max 3,500 kg; trailer(s) combined total weight max 3,500 kg.
@@ -56,3 +57,4 @@ npm run build
 
 ## Status
 Foundation/MVP plus concept lab. The app is useful for early study but should not be marketed as a complete exam-preparation product until the audited question bank and syllabus coverage targets in `docs/PRODUCT_SPEC.md` are met.
+

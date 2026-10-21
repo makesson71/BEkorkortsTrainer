@@ -6,7 +6,9 @@
 3. Other primary legislation/authority material when needed.
 4. Secondary material only for pedagogy, never as the sole authority for a legal rule.
 
-## Current verified anchors (2026-09-03)
+## Current verified anchors
+
+Core licence and theory anchors were checked 2026-09-03. Coupling and safety-control sources were rechecked 2026-10-20.
 - Trafikverket BE page: 60 questions, 40 minutes, 44 points to pass, maximum 55 because five are test questions; passed theory valid one year; driving-test structure and vehicle requirements.
 - Transportstyrelsen BE page: car/light truck total weight max 3,500 kg; trailer(s) combined total weight max 3,500 kg for current BE.
 - Transportstyrelsen Personbil med släp: B and B96 entitlement structure.
@@ -18,6 +20,8 @@
 - Lag (2001:559) om vägtrafikdefinitioner: släpvagn, släpkärra, efterfordon, fordonståg, lätt/tungt släpfordon, släpvagnsvikt.
 - TSFS 2015:63: registration-certificate field codes F.2, F.3, O.1, O.2.
 - TSFS 2019:127: coupling break / reservkoppling (säkerhetsvajer).
+- Trafikverket BE page: the controls that always form part of the driving-test safety check, the pool of additional checks and the expectation to explain purpose, risk and corrective action.
+- Transportstyrelsen trailer guidance: current coupling checklist and the distinction between using a designated eyelet and equipment without one.
 
 ## Core rule
 Do not use **tågvikt** when you actually mean the sum of registered **totalvikter**.
@@ -51,3 +55,4 @@ Rule-bearing definitions live in `src/data/concepts.ts` with `sourceIds`. Do not
 The app is for training. For a real vehicle combination, the user should verify registration certificates and use Transportstyrelsen's current tools/guidance.
 
 This is still an MVP, not comprehensive BE theory preparation. The questions are original training material and are not claimed to be, or copied from, official Trafikverket exam questions. Begreppslabbet and Weight Lab do not provide a complete legal clearance.
+
